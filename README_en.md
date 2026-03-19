@@ -5,6 +5,18 @@
 [![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-orange.svg)](https://www.mozilla.org/en-US/MPL/2.0/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE-MIT.txt)
 
+---
+
+<div align="center">
+
+**🌍 Choose Language / 选择语言:**
+
+[**🇨🇳 简体中文**](README.md) | [**🌐 English**](README_en.md)
+
+</div>
+
+---
+
 ## 📖 Introduction
 
 **PawnIoModuleCpp** is a C++20-based system-level temperature reading module that provides hardware-level CPU temperature monitoring by accessing Intel MSR (Model Specific Registers). This project uses the PawnIO v2 driver and IntelMSR module to deliver precise CPU temperature data for developers and hardware monitoring tools.

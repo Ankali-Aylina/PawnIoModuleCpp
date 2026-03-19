@@ -5,6 +5,18 @@
 [![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-orange.svg)](https://www.mozilla.org/en-US/MPL/2.0/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE-MIT.txt)
 
+---
+
+<div align="center">
+
+**🌍 选择语言 / Choose Language:**
+
+[**🇨🇳 简体中文**](README.md) | [**🌐 English**](README_en.md)
+
+</div>
+
+---
+
 ## 📖 项目简介
 
 **PawnIoModuleCpp** 是一个基于 C++20 的系统级温度读取模块，通过访问 Intel MSR（Model Specific Registers）实现硬件层面的 CPU 温度监控。该项目使用 PawnIO v2 驱动程序和 IntelMSR 模块，为开发者和硬件监控工具提供精确的 CPU 温度数据。
