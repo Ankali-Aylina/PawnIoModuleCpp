@@ -4,6 +4,7 @@
 [![Platform](https://img.shields.io/badge/platform-Windows-lightgrey.svg)](https://www.microsoft.com/windows)
 [![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-orange.svg)](https://www.mozilla.org/en-US/MPL/2.0/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE-MIT.txt)
+[![License: GPL-2.0](https://img.shields.io/badge/License-GPL--2.0-blue.svg)](LICENSE-GPL-2.0.txt)
 
 ---
 
@@ -388,11 +389,15 @@ See the [LICENSE](LICENSE) file for details.
 
 ### 📜 Licenses Used in This Project
 
-**Important Notice**: Since this project includes the IntelMSR.bin file extracted from the LibreHardwareMonitor project, you need to understand the following license requirements:
+**Important Notice**: This project contains multiple components, each using different licenses:
 
-#### 1. LibreHardwareMonitor's MPL 2.0 License
+#### 1. IntelMSR.bin - MPL 2.0 License
 
-LibreHardwareMonitor uses the **MPL 2.0 (Mozilla Public License)** license, which is a **weak Copyleft** license with the following main requirements:
+**Source**: LibreHardwareMonitor Project  
+**License**: **MPL 2.0 (Mozilla Public License)**  
+**Modified**: ❌ No
+
+MPL 2.0 is a **weak Copyleft** license with the following main requirements:
 
 ✅ **Permitted Uses:**
 - Commercial use
@@ -409,27 +414,83 @@ LibreHardwareMonitor uses the **MPL 2.0 (Mozilla Public License)** license, whic
 
 **This project has NOT modified the IntelMSR.bin file from LibreHardwareMonitor.**
 
-📋 **Impact on This Project:**
+#### 2. PawnIO.sys - GPL-2.0 License (with Special Exception)
 
-| File/Component | License | Need to Open Source Modifications | Notes |
-|----------------|---------|-----------------------------------|-------|
-| IntelMSR.bin | MPL 2.0 | ❌ No (unmodified) | Using original binary file only |
-| PawnIoModule.cpp/h | MIT | ❌ No | **Completely independent original implementation** |
-| Example/ code | MIT | ❌ No | **Completely independent original implementation** |
-| Compiled Executable | Dual License | ⚠️ Note | Contains MPL component + MIT code |
+**Source**: PawnIO Project (https://github.com/namazso/PawnIO)  
+**Author**: namazso <admin@namazso.eu>  
+**License**: **GPL-2.0 (GNU General Public License version 2)** + Special Exception  
+**Modified**: ❌ No
+
+GPL-2.0 is a **strong Copyleft** license with the following characteristics:
+
+✅ **Permitted Uses:**
+- Commercial use
+- Modification and distribution
+- Patent use
+
+⚠️ **Required Obligations:**
+1. **Strong Viral Nature** - Any derivative works based on GPL code must be licensed as a whole under GPL-2.0
+2. **Source Code Provision** - Must provide complete source code or written offer to provide it
+3. **License Text** - Must include the full text of GPL-2.0 license
+4. **Clear Notice** - Must clearly state modifications and dates
+5. **NO WARRANTY** - Provided "AS IS" without warranty of any kind
+
+**Special Exception Clause**:
+The copyright holders of PawnIO grant you additional permission to combine PawnIO with:
+- Free software programs or libraries released under GNU LGPL
+- Independent modules that communicate with PawnIO solely through the device IO control interface
+
+This means:
+- ✅ IntelMSR.bin (MPL 2.0) can be used with PawnIO under this exception
+- ✅ This project's original code (MIT License) can be used with PawnIO under this exception
+- ⚠️ But if communicating directly with PawnIO over the Pawn interface, must be compatible with GPL-2.0
+
+**Runtime Dependency**:
+PawnIO driver is a runtime dependency that users need to download and install separately; it is not included in this project.
+
+#### 3. This Project's Original Code - MIT License
+
+**Scope**: 
+- [`PawnIoModule.cpp`](PawnIoModule.cpp) - PawnIO driver interaction interface implementation
+- [`PawnIoModule.h`](PawnIoModule.h) - PawnIO driver interaction interface definition
+- [`Example/IntelMsrReader.cpp`](Example/IntelMsrReader.cpp) - MSR reader implementation
+- [`Example/IntelMsrReader.h`](Example/IntelMsrReader.h) - MSR reader definition
+- [`Example/main.cpp`](Example/main.cpp) - Example program
+
+**MIT License** is a permissive open source license:
+- ✅ Permits commercial use, modification, distribution
+- ✅ Can be combined with other licenses
+- ⚠️ Requires retention of copyright and license notice
+- ❌ NO WARRANTY
+
+### 📋 Multi-License Structure
+
+The compiled executable (e.g., `cpu_temp.exe`) contains:
+1. Project author's original code (MIT License)
+2. IntelMSR.bin module (MPL 2.0)
+3. Depends on PawnIO driver (GPL-2.0 + special exception)
+
+Therefore, **distribution of the executable must comply with the requirements of MIT License, MPL 2.0, and GPL-2.0 simultaneously**.
+
+For detailed compliance information, please see the [`THIRD-PARTY-NOTICES.md`](THIRD-PARTY-NOTICES.md) document.
+
+---
+
+⚠️ **Disclaimer**: This software is provided for educational and research purposes only. Using this software to access MSR registers may pose system risks, and you assume all responsibility for such use. It is recommended to thoroughly test before using in production environments.
 
 ### 📝 Recommended Compliance Measures
 
 #### ✅ **Immediate Actions Required:**
 
-1. **Include LICENSE Files** - Include two license files in the project:
+1. **Include LICENSE Files** - Include all license files in the project:
    ```
    LICENSE-MPL-2.0.txt    (LibreHardwareMonitor's MPL 2.0 license)
    LICENSE-MIT.txt        (Your own code's MIT license)
+   LICENSE-GPL-2.0.txt    (PawnIO's GPL-2.0 license)
    ```
 
-2. **Create THIRD-PARTY-NOTICES File** - Clearly declare third-party components:
-   ````
+2. **Create THIRD-PARTY-NOTICES File** - Clearly declare all third-party components:
+   ```md
    # Third-Party Notices
    
    ## IntelMSR.bin
@@ -439,34 +500,36 @@ LibreHardwareMonitor uses the **MPL 2.0 (Mozilla Public License)** license, whic
    
    ## PawnIO Driver
    - Source: https://github.com/namazso/PawnIO
-   - License: [See original project]
+   - Author: namazso <admin@namazso.eu>
+   - License: GPL-2.0 with special exception
+   - Modification Status: Unmodified
    ```
    
    **Important Note**: All C++ code in this project (including interaction logic with IntelMSR.bin) is independently and originally implemented by the author and does not directly originate from the LibreHardwareMonitor project.
 
-3. **Update README License Badges** - Changed from single MIT badge to dual-license declaration
+3. **Update README License Badges** - Reflect true multi-license status with badges for MPL 2.0, MIT, and GPL-2.0
 
 ### 🚨 Risk Warning
 
 ❌ **Current Project Risks:**
-1. No MPL 2.0 license text included in the project
-2. No clear third-party component declaration
-3. MIT license claimed in README may be inaccurate
+1. Multiple licenses must be complied with simultaneously
+2. GPL-2.0 has strong copyleft requirements (though mitigated by special exception)
+3. Runtime dependency on external driver (PawnIO)
 
-⚠️ **Non-compliance with MPL 2.0 may result in:**
+⚠️ **Non-compliance may result in:**
 - Copyright infringement risks
-- Accountability from LibreHardwareMonitor project
+- Accountability from original project authors
 - Impact on commercial use legitimacy
 
 ### 📋 Next Steps Checklist
 
 - [x] **Download MPL 2.0 license text** - https://www.mozilla.org/en-US/MPL/2.0/
-- [x] **Create THIRD-PARTY-NOTICES.md** - Declare IntelMSR.bin source
-- [x] **Confirm IntelMSR.bin is unmodified** - ✅ Using original binary file only, no need to open source additional code
+- [x] **Download GPL-2.0 license text** - https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+- [x] **Create THIRD-PARTY-NOTICES.md** - Declare all third-party components
+- [x] **Confirm IntelMSR.bin is unmodified** - ✅ Using original binary file only
+- [x] **Confirm PawnIO is unmodified** - ✅ Using original driver
 - [x] **Update README license badges** - Reflect true license status
 - [ ] **Replace placeholder information** - Add your name and year to LICENSE-MIT.txt
 - [ ] **Consider legal consultation** - If used for commercial purposes, consult an intellectual property attorney
 
 ---
-
-⚠️ **Disclaimer**: This software is provided for educational and research purposes only. Using this software to access MSR registers may pose system risks, and you assume all responsibility for such use. It is recommended to thoroughly test before using in production environments.

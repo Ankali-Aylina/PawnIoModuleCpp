@@ -4,6 +4,7 @@
 [![Platform](https://img.shields.io/badge/platform-Windows-lightgrey.svg)](https://www.microsoft.com/windows)
 [![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-orange.svg)](https://www.mozilla.org/en-US/MPL/2.0/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE-MIT.txt)
+[![License: GPL-2.0](https://img.shields.io/badge/License-GPL--2.0-blue.svg)](LICENSE-GPL-2.0.txt)
 
 ---
 
@@ -384,11 +385,15 @@ sc query PawnIO
 
 ### 📜 本项目使用的许可证
 
-**重要提示**: 由于本项目包含了从 LibreHardwareMonitor 项目提取的 IntelMSR.bin 文件，您需要了解以下许可证要求：
+**重要提示**: 本项目包含多个第三方组件，每个组件使用不同的许可证：
 
-#### 1. LibreHardwareMonitor 的 MPL 2.0 许可证
+#### 1. IntelMSR.bin - MPL 2.0 许可证
 
-LibreHardwareMonitor 使用 **MPL 2.0 (Mozilla Public License)** 许可证，这是一个**弱 Copyleft**许可证，主要要求包括：
+**来源**: LibreHardwareMonitor 项目  
+**许可证**: **MPL 2.0 (Mozilla Public License)**  
+**是否修改**: ❌ 否
+
+MPL 2.0 是一个**弱 Copyleft**许可证，主要要求包括：
 
 ✅ **允许的使用方式：**
 - 商业使用
@@ -403,7 +408,68 @@ LibreHardwareMonitor 使用 **MPL 2.0 (Mozilla Public License)** 许可证，这
 3. **许可证文本**：必须包含 MPL 2.0 许可证全文
 4. **文件级 Copyleft**：MPL 的要求仅限于 MPL 许可的文件本身，不传染其他文件
 
-**本项目未修改LibreHardwareMonitor 项目中的 IntelMSR.bin 文件**
+**本项目未修改 LibreHardwareMonitor 项目中的 IntelMSR.bin 文件**
 
+#### 2. PawnIO.sys - GPL-2.0 许可证（含特殊例外）
+
+**来源**: PawnIO 项目 (https://github.com/namazso/PawnIO)  
+**作者**: namazso <admin@namazso.eu>  
+**许可证**: **GPL-2.0 (GNU General Public License version 2)** + 特殊例外条款  
+**是否修改**: ❌ 否
+
+GPL-2.0 是一个**强 Copyleft**许可证，具有以下特点：
+
+✅ **允许的使用方式：**
+- 商业使用
+- 修改和分发
+- 专利使用
+
+⚠️ **必须遵守的义务：**
+1. **强传染性** - 任何基于 GPL 代码的衍生作品必须整体采用 GPL-2.0 许可
+2. **源代码提供** - 必须提供完整的源代码或书面提供承诺
+3. **许可证文本** - 必须包含 GPL-2.0 许可证全文
+4. **明确声明** - 明确声明修改和日期
+5. **无担保责任** - 按"原样"提供，无任何担保
+
+**特殊例外条款**：
+PawnIO 的版权持有者授予额外许可，允许您将 PawnIO 与以下组件组合：
+- 根据 GNU LGPL 发布的免费软件程序或库
+- 仅通过设备 IO 控制接口与 PawnIO 通信的独立模块
+
+这意味着：
+- ✅ IntelMSR.bin（MPL 2.0）可以通过此例外与 PawnIO 一起使用
+- ✅ 本项目的原创代码（MIT License）可以通过此例外与 PawnIO 一起使用
+- ⚠️ 但如果直接与 PawnIO 通过 Pawn 接口通信，则必须兼容 GPL-2.0
+
+**运行时依赖**：
+PawnIO 驱动是运行时依赖，需用户自行下载安装，不包含在本项目中。
+
+#### 3. 本项目原创代码 - MIT License
+
+**范围**: 
+- [`PawnIoModule.cpp`](PawnIoModule.cpp) - PawnIO 驱动交互接口实现
+- [`PawnIoModule.h`](PawnIoModule.h) - PawnIO 驱动交互接口定义
+- [`Example/IntelMsrReader.cpp`](Example/IntelMsrReader.cpp) - MSR 读取器实现
+- [`Example/IntelMsrReader.h`](Example/IntelMsrReader.h) - MSR 读取器定义
+- [`Example/main.cpp`](Example/main.cpp) - 示例程序
+
+**MIT License** 是一个宽松的开源许可证：
+- ✅ 可商用、修改、分发
+- ✅ 可与其他许可证组合
+- ⚠️ 需保留版权和许可声明
+- ❌ 无担保责任
+
+### 📋 多重许可证结构
+
+编译后的可执行文件（如 `cpu_temp.exe`）包含：
+1. 项目作者的原创代码（MIT License）
+2. IntelMSR.bin 模块（MPL 2.0）
+3. 依赖 PawnIO 驱动（GPL-2.0 + 特殊例外）
+
+因此，**可执行文件的分发需同时遵守 MIT License、MPL 2.0 和 GPL-2.0 的要求**。
+
+详细合规信息请查看 [`THIRD-PARTY-NOTICES.md`](THIRD-PARTY-NOTICES.md) 文档。
+
+---
 
 **⚠️ 免责声明**: 本软件仅供学习和研究使用。使用本软件访问 MSR 寄存器可能存在系统风险，请自行承担使用后果。建议在生产环境使用前充分测试。

@@ -10,13 +10,17 @@ Please refer to the following files for license information:
 2. **LICENSE-MIT.txt** - MIT License
    - Applies to: Project original code (PawnIoModule.cpp/h, Example/ code, etc.)
 
-3. **THIRD-PARTY-NOTICES.md** - Third-party component declaration
+3. **LICENSE-GPL-2.0.txt** - GNU General Public License version 2.0
+   - Applies to: PawnIO driver (runtime dependency, separate installation required)
+   - Note: Includes special exception allowing combination with LGPL libraries and independent modules
+
+4. **THIRD-PARTY-NOTICES.md** - Third-party component declaration
    - Detailed declaration of sources and license information for all third-party components
 
-4. **README_en.md** - English README
+5. **README_en.md** - English README
    - Complete project documentation in English
 
-5. **README.md** - Chinese README (简体中文)
+6. **README.md** - Chinese README (简体中文)
    - Complete project documentation in Chinese
 
 ## ℹ️ More Information
@@ -25,4 +29,10 @@ Please refer to the "License Compliance Information" section in [README_en.md](R
 
 ## ⚠️ Important Notice
 
-Since this project includes the IntelMSR.bin file extracted from the LibreHardwareMonitor project, both MPL 2.0 and MIT License requirements must be complied with when using and distributing this project. See THIRD-PARTY-NOTICES.md for details.
+This project contains multiple licensed components:
+
+- **IntelMSR.bin** (MPL 2.0) - From LibreHardwareMonitor project
+- **PawnIO.sys** (GPL-2.0 + exception) - From PawnIO project by namazso
+- **Original code** (MIT License) - Project author's code
+
+When using and distributing this project, you must comply with all applicable license requirements. See THIRD-PARTY-NOTICES.md for details.
