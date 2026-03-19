@@ -1,0 +1,114 @@
+# ======================
+# 构建输出目录
+# ======================
+build/
+Build/
+BUILD/
+cmake-build-*/
+out/
+
+# ======================
+# 编译产物
+# ======================
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+*.pdb
+*.ilk
+*.exp
+*.map
+
+# ======================
+# CMake 生成文件
+# ======================
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+install_manifest.txt
+Makefile
+compile_commands.json
+Testing/
+DartConfiguration.tcl
+
+# ======================
+# 安装包和临时文件
+# ======================
+*.zip
+*.tar.gz
+*.msi
+*.pkg
+*.deb
+*.rpm
+cpack_config.*
+CPackConfig.cmake
+CPackSourceConfig.cmake
+
+# ======================
+# IDE 和编辑器文件
+# ======================
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.sdf
+*.ipch
+*.aps
+*.ncb
+*.vcxproj.filters
+*.vcxproj.user
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# CLion / IntelliJ
+.idea/
+*.iml
+
+# Qt Creator
+*.creator
+*.creator.user
+*.config
+
+# ======================
+# 系统文件
+# ======================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ======================
+# 日志和临时文件
+# ======================
+*.log
+*.tmp
+*.temp
+~$*
+*.swp
+*.bak
+
+# ======================
+# 测试相关文件
+# ======================
+ctest_output.log
+LastTest.log
+LastTestsFailed.log
+
+# ======================
+# 驱动文件（如果不需要版本控制）
+# ======================
+# IntelMSR.bin 通常需要，但如果是自动下载的则忽略
+# IntelMSR.bin
+
+# ======================
+# 敏感信息
+# ======================
+*.key
+*.pem
+*.cert
+credentials.json
+.env
+.env.local

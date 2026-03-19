@@ -1,21 +1,28 @@
-MIT License
+# License Files
 
-Copyright (c) 2026 Ankali-Aylina
+Please refer to the following files for license information:
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+## 📄 Main License Files
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+1. **LICENSE-MPL-2.0.txt** - Mozilla Public License 2.0
+   - Applies to: IntelMSR.bin module (extracted from LibreHardwareMonitor)
+   
+2. **LICENSE-MIT.txt** - MIT License
+   - Applies to: Project original code (PawnIoModule.cpp/h, Example/ code, etc.)
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+3. **THIRD-PARTY-NOTICES.md** - Third-party component declaration
+   - Detailed declaration of sources and license information for all third-party components
+
+4. **README_en.md** - English README
+   - Complete project documentation in English
+
+5. **README.md** - Chinese README (简体中文)
+   - Complete project documentation in Chinese
+
+## ℹ️ More Information
+
+Please refer to the "License Compliance Information" section in [README_en.md](README_en.md) or view [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) for complete third-party component declarations.
+
+## ⚠️ Important Notice
+
+Since this project includes the IntelMSR.bin file extracted from the LibreHardwareMonitor project, both MPL 2.0 and MIT License requirements must be complied with when using and distributing this project. See THIRD-PARTY-NOTICES.md for details.
