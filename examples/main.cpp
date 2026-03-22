@@ -51,7 +51,7 @@ bool ReadTjMax(IntelMsrReader& reader, float& tjMax)
     
     // TjMax 在 bits 23:16 中
     tjMax = static_cast<float>((value >> 16) & 0xFF);
-    std::cout << "[DEBUG] TjMax extracted: " << tjMax << "°C" << std::endl;
+    std::cout << "[DEBUG] TjMax extracted: " << tjMax << " C" << std::endl;
     return true;
 }
 
@@ -397,11 +397,11 @@ int main(int argc, char *argv[])
         float avgTemp = totalTemp / validReadings;
         std::cout << "Total readings: " << validReadings << std::endl;
         std::cout << "Minimum temp:   " << std::fixed << std::setprecision(1)
-                  << minTemp << "°C" << std::endl;
+                  << minTemp << " C" << std::endl;
         std::cout << "Maximum temp:   " << std::fixed << std::setprecision(1)
-                  << maxTemp << "°C" << std::endl;
+                  << maxTemp << " C" << std::endl;
         std::cout << "Average temp:   " << std::fixed << std::setprecision(1)
-                  << avgTemp << "°C" << std::endl;
+                  << avgTemp << " C" << std::endl;
     }
     else
     {
